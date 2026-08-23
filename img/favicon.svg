@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="52" height="123.359375" viewBox="0 0 52 123.359375">
-<defs>
-<g>
-<g id="glyph-0-0">
-<path d="M 3.5625 0 L 24.191406 0 L 24.191406 -0.214844 L 17.820312 -7.992188 L 17.820312 -73.007812 L 24.191406 -80.785156 L 24.191406 -81 L 3.457031 -81 L 3.457031 -80.785156 L 9.828125 -73.007812 L 9.828125 -7.992188 L 3.5625 -0.214844 Z M 3.5625 0 "/>
-</g>
-</g>
-</defs>
-<rect x="-5.2" y="-12.335938" width="62.4" height="148.03125" fill="rgb(95.686275%, 93.72549%, 90.196078%)" fill-opacity="1"/>
-<g fill="rgb(54.901961%, 38.431373%, 22.352941%)" fill-opacity="1">
-<use xlink:href="#glyph-0-0" x="12" y="93"/>
-</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">IVRAHIM Merkaba favicon</title>
+  <style>
+    .ground{fill:#F4EFE6}.mark{stroke:#8C6239}
+    @media (prefers-color-scheme:dark){.ground{fill:#1C1917}.mark{stroke:#E8C0A4}}
+  </style>
+  <rect class="ground" width="64" height="64" rx="7"/>
+  <g class="mark" fill="none" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 5.5L59 50.5H5Z"/>
+    <path d="M5.8 15H58.2L32 59Z"/>
+    <path d="M5.8 15L32 31.8L58.2 15"/>
+    <path d="M32 31.8V59"/>
+    <path d="M5 50.5H59"/>
+  </g>
 </svg>
