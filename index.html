@@ -226,6 +226,12 @@
   .edge{stroke:rgba(140,98,57,.42);stroke-width:1.6;fill:none;}
   .node{fill:var(--bronze);}
 
+  /* ---- portraits ---- */
+  .look-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;margin:38px auto 0;max-width:1000px;}
+  .look-gallery figure{margin:0;}
+  .look-gallery img{display:block;width:100%;height:auto;aspect-ratio:2/3;}
+  @media(max-width:600px){.look-gallery{grid-template-columns:1fr;gap:22px;margin-top:28px;}}
+
   /* ---- wave ---- */
   .strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;margin-top:30px;}
   .strip figure{margin:0;}
@@ -487,22 +493,17 @@
     </div>
 
     <div class="sub">
-      <h3>The look</h3>
+      <h3 id="look">The look</h3>
       <div class="narrow">
         <p>Traditional garments with a modern sensual flair.</p>
         <p>If Moses dressed like Prince.</p>
       </div>
-    <div class="strip">
-      <figure><img src="img/ref-3.jpg" alt="Reference: Ali Sethi"></figure>
-      <figure><img src="img/ref-1.jpg" alt="Reference: Prince"></figure>
-      <figure><img src="img/ref-5.jpg" alt="Reference: Arc De Soleil"></figure>
-      <figure><img src="img/ref-2.jpg" alt="Reference: Prince"></figure>
-      <figure><img src="img/ref-6.jpg" alt="Reference: Arc De Soleil"></figure>
-      <figure><img src="img/ref-4.jpg" alt="Reference: Ali Sethi"></figure>
-      <figure><img src="img/ref-7.jpg" alt="Reference: Arc De Soleil"></figure>
-      <figure><img src="img/ref-9.jpg" alt="Reference: Arc De Soleil"></figure>
+    <div class="look-gallery" aria-label="IVRAHIM portraits">
+      <figure><img src="img/ivrahim-angle-halo.webp" alt="IVRAHIM in black and gold against a glowing red-orange backdrop" width="1024" height="1536" loading="lazy" decoding="async"></figure>
+      <figure><img src="img/ivrahim-studio-power.webp" alt="IVRAHIM seated with a wooden harmonium against a teal backdrop" width="1024" height="1536" loading="lazy" decoding="async"></figure>
+      <figure><img src="img/ivrahim-divine-interruption.webp" alt="IVRAHIM with arms extended against a dramatic lightning backdrop" width="1024" height="1536" loading="lazy" decoding="async"></figure>
+      <figure><img src="img/ivrahim-dreamscape.webp" alt="IVRAHIM playing guitar in a wildflower field at sunset" width="1024" height="1536" loading="lazy" decoding="async"></figure>
     </div>
-    <p class="reference-note">Visual references only. Images belong to their respective artists and photographers.</p>
     </div>
 
   </div>
@@ -567,7 +568,6 @@
 <footer>
   <div class="wrap">
     <p style="margin-bottom:8px">IVRAHIM &middot; Los Angeles &middot; <a href="mailto:hello@ivrahim.com">hello@ivrahim.com</a></p>
-    <p style="font-size:12px;color:rgba(125,114,102,.8);margin:0">Visual references only. Images belong to their respective artists and photographers.</p>
   </div>
 </footer>
 
