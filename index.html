@@ -302,12 +302,14 @@
   .cta.ghost{background:none;color:var(--bronze);box-shadow:inset 0 0 0 1px var(--bronze);}
   .cta.ghost:hover{background:var(--bronze);color:var(--bone);}
   .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:44px;}
-  .signup{display:flex;align-items:center;justify-content:space-between;gap:28px;
-    margin-top:64px;padding-top:38px;border-top:1px solid var(--hair);}
+  .signup{margin-top:64px;padding-top:38px;border-top:1px solid var(--hair);}
   .signup h3{font-family:var(--display);font-weight:700;font-size:28px;
     color:var(--char);line-height:1.2;margin-bottom:10px;}
   .signup p{margin:0;}
-  .signup .cta{flex-shrink:0;margin:0;}
+  .signup-frame{display:block;width:100%;height:230px;border:0;margin-top:28px;}
+  .signup-confirmation{font-family:var(--display);font-size:25px;color:var(--char);
+    line-height:1.4;margin-top:28px;}
+  .signup-confirmation:focus{outline:none;}
   .hero-signup{display:inline-block;margin-top:22px;font-size:14px;
     color:var(--bronze);text-underline-offset:4px;}
   a:focus-visible{outline:2px solid var(--bronze);outline-offset:5px;}
@@ -355,8 +357,8 @@
     .v-name2{font-size:30px;}
     .core-sub{font-size:25px;}
     .ctas .cta{flex:1 1 100%;text-align:center;}
-    .signup{flex-direction:column;align-items:flex-start;gap:22px;margin-top:48px;}
-    .signup .cta{width:100%;text-align:center;}
+    .signup{margin-top:48px;}
+    .signup-frame{height:360px;}
     .drawer{margin-top:34px;}
     .pull{font-size:20px;padding-left:18px;}
 
@@ -583,7 +585,8 @@
         <h3 id="signup-title">Stay in touch</h3>
         <p>Occasional notes on new music and places to gather.</p>
       </div>
-      <a class="cta" href="https://form.jotform.com/262986536126063" target="_blank" rel="noopener">Keep me in the loop</a>
+      <iframe class="signup-frame" id="signup-frame" src="signup.html" title="Join the IVRAHIM mailing list" loading="lazy"></iframe>
+      <p class="signup-confirmation" id="signup-confirmation" role="status" tabindex="-1" hidden>You&rsquo;re on the list. Thank you for listening :)</p>
     </div>
   </div>
 </section>
@@ -593,6 +596,32 @@
     <p style="margin-bottom:8px">IVRAHIM &middot; Los Angeles &middot; <a href="mailto:hello@ivrahim.com">hello@ivrahim.com</a></p>
   </div>
 </footer>
+
+<script>
+(function(){
+  var frame = document.getElementById('signup-frame');
+  var confirmation = document.getElementById('signup-confirmation');
+  addEventListener('message', function(event){
+    if (event.source !== frame.contentWindow) return;
+    var data = event.data;
+    if (event.origin === location.origin && data && data.type === 'ivrahim-signup-height') {
+      var height = Number(data.height);
+      if (Number.isFinite(height) && height > 0 && height < 2000) frame.style.height = height + 'px';
+    }
+    if (event.origin === 'https://submit.jotform.com' && data &&
+        data.action === 'submission-completed' && data.formID === '262986536126063') {
+      frame.hidden = true;
+      confirmation.hidden = false;
+      confirmation.focus({preventScroll:true});
+    }
+    // Jotform also resizes its validation or CAPTCHA screen within the frame.
+    if (event.origin === 'https://submit.jotform.com' && typeof data === 'string' &&
+        /^setHeight:\d+:262986536126063$/.test(data)) {
+      frame.style.height = Math.min(1200, Math.max(230, Number(data.split(':')[1]))) + 'px';
+    }
+  });
+})();
+</script>
 
 <script>
 (function(){
