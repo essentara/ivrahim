@@ -276,11 +276,10 @@
   .wishes{background:var(--peach);padding:88px 0;color:var(--ink);}
   .wishes h2{font-size:48px;margin-bottom:42px;}
   .asks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px 64px;}
-  .ask{display:grid;grid-template-columns:112px minmax(0,1fr);gap:24px;align-items:center;}
-  .wish-graphic{display:block;width:112px;height:144px;color:var(--bronze);}
-  .wish-graphic .paper{fill:var(--bone);}
-  .wish-graphic .shade{fill:var(--copper);opacity:.16;}
-  .ask h3{font-family:var(--display);font-weight:700;font-size:25px;
+  .ask{display:grid;grid-template-columns:64px minmax(0,1fr);gap:26px;align-items:start;min-height:128px;}
+  .wish-index{display:block;font-family:var(--display);font-weight:400;font-size:64px;
+    letter-spacing:-.07em;line-height:1;color:var(--bronze);opacity:.5;margin-top:-4px;}
+  .ask h3{font-family:var(--display);font-weight:400;font-size:25px;
     line-height:1.18;letter-spacing:-.01em;color:var(--char);margin-bottom:12px;}
   .ask p{font-size:16px;line-height:1.55;color:var(--ink);margin:0;max-width:34ch;}
   .wishes-contact{display:flex;align-items:center;justify-content:space-between;
@@ -366,8 +365,8 @@
     .wishes,.signup-section{padding:68px 0;}
     .wishes h2{font-size:36px;margin-bottom:32px;}
     .asks{gap:38px;grid-template-columns:1fr;}
-    .ask{grid-template-columns:88px minmax(0,1fr);gap:20px;}
-    .wish-graphic{width:88px;height:116px;}
+    .ask{grid-template-columns:44px minmax(0,1fr);gap:20px;min-height:0;}
+    .wish-index{font-size:46px;margin-top:0;}
     .ask h3{font-size:23px;}
     .ask p{font-size:16px;}
     .wishes-contact{flex-direction:column;align-items:flex-start;gap:22px;margin-top:42px;}
@@ -574,60 +573,22 @@
     <h2 id="wishes-title">Wishes</h2>
     <div class="asks">
       <div class="ask">
-        <svg class="wish-graphic" viewBox="0 0 132 168" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path class="shade" stroke="none" d="M16 141c18-9 71-8 99 1l-3 11c-30 8-70 6-100-1z"/>
-          <g transform="rotate(-12 53 95)">
-            <path class="paper" d="M49 68c-12-6-27 4-24 17 2 9 9 12 5 21-6 14 1 31 19 34 18 2 33-8 32-23-1-12-14-16-11-26 4-14-4-26-16-23"/>
-            <path class="paper" d="M49 26l9-1 2 63-10 1zM47 12l13-1 2 15-13 1z"/>
-            <path d="M46 17l-4 1m5 6-4 1m18-9 5-1m-4 8 5-1M53 27l2 84M45 118l20-2M48 123l15-1"/>
-            <path class="shade" d="M48 91c-6 4-6 12 1 15 7 4 13-2 12-8-2-6-7-9-13-7z"/>
-          </g>
-          <path class="paper" d="M86 107c6-5 22-6 30 0l-4 36c-7 5-17 4-23 0z"/>
-          <path d="M86 107c8 5 22 5 30 0M90 112l18 29m5-29-19 30M92 98l-6-10m17 9 2-13"/>
-        </svg>
+        <span class="wish-index" aria-hidden="true">01</span>
         <div class="wish-copy"><h3>People to make this music with</h3>
         <p>Live and in the studio. Maybe that&rsquo;s you?</p></div>
       </div>
       <div class="ask">
-        <svg class="wish-graphic" viewBox="0 0 132 168" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path class="shade" stroke="none" d="M13 139l72-18 35 24-66 12z"/>
-          <path class="paper" d="M29 134V35l63-9 1 101z"/>
-          <path d="M36 130V42l49-7v91M93 27l7 7v98M25 141l77-9M22 148l84-9"/>
-          <path class="shade" stroke="none" d="M38 44l44-6v87l-44 8z"/>
-          <path class="paper" d="M38 43l31 11v90l-31-12z"/>
-          <path d="M58 94l3 1M49 60l11 4v15l-11-4zM49 101l11 4v20l-11-4z"/>
-          <path d="M105 91c-8-14-3-24 3-25 8-1 11 12-3 25zm1 0c16-8 22-1 19 4-4 6-13 4-19-4zm0 0v33"/>
-          <path class="paper" d="M97 119l22 1-4 22-15-1z"/>
-          <path d="M12 56l8 2m-3-17 6 4M74 16l2-8"/>
-        </svg>
+        <span class="wish-index" aria-hidden="true">02</span>
         <div class="wish-copy"><h3>Places to bring the music</h3>
         <p>Hosts, spaces, and people in LA or New York who should hear it.</p></div>
       </div>
       <div class="ask">
-        <svg class="wish-graphic" viewBox="0 0 132 168" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path class="shade" stroke="none" d="M14 133c27-12 66-9 108 2l-10 15-91-3z"/>
-          <g transform="rotate(9 72 65)">
-            <path class="paper" d="M39 39l66 2-3 56-66-2z"/>
-            <path class="paper" d="M45 50l1-28 48 2-1 27"/>
-            <path d="M54 35l29 2m-30 6 26 2m-24 7 13 1M39 42l29 27 36-26M38 94l24-26m40 28-24-27"/>
-          </g>
-          <path class="paper" d="M12 130l18-21c4-4 8-6 12-5l23 5c7 2 6 10-1 10l-15-2 23 5c8 2 16-2 23-5l18-9c8-4 13 4 6 9l-26 22c-8 6-15 10-25 8l-31-6-13 11"/>
-          <path d="M49 117l-7-1m30 6 10 1M23 127l11 11"/>
-          <path d="M17 63l7-1m-3-12 5 4M110 23l5-6m1 17 8-1"/>
-        </svg>
+        <span class="wish-index" aria-hidden="true">03</span>
         <div class="wish-copy"><h3>Support that helps it keep growing</h3>
         <p>Grants, paid gigs, funding, or an introduction.</p></div>
       </div>
       <div class="ask">
-        <svg class="wish-graphic" viewBox="0 0 132 168" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path class="shade" stroke="none" d="M10 145l88-12 26 12-79 13z"/>
-          <path class="paper" d="M24 141V58l12-1V36c0-13 17-21 30-20 14 1 23 9 24 21v15l14-1 1 80z"/>
-          <path d="M18 145l92-12M14 152l99-12M36 57l54-5M28 65l72-6M40 36c2-16 43-21 45 0M35 40l54-5"/>
-          <path class="shade" d="M48 138V98c0-20 29-23 29-4v41z"/>
-          <path d="M62 84v51M49 105l27-3M57 110v15m11-17v15"/>
-          <path class="paper" d="M30 84c0-8 10-9 10-1v16l-10 1zM85 79c0-8 10-9 10-1v16l-10 1z"/>
-          <path d="M30 91l10-1m45-4 10-1M52 53V44c1-4 5-4 7-1 2-4 7-5 9-1v10M59 43v9M28 116l11-1m-6 8 10-1m39-15 12-1m-4 11 11-1"/>
-        </svg>
+        <span class="wish-index" aria-hidden="true">04</span>
         <div class="wish-copy"><h3>A beautiful historic synagogue</h3>
         <p>For a live performance or music video.</p></div>
       </div>
