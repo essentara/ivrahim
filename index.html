@@ -269,6 +269,9 @@
   .dark .wl .lk a{color:var(--peach);}
   .wl .lk a:hover{border-bottom-color:currentColor;}
 
+  /* Keep paused sections hidden even if their layout styles change. */
+  [hidden]{display:none!important;}
+
   /* ---- asks ---- */
   .asks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px;margin-top:34px;}
   .ask{padding-top:18px;border-top:2px solid var(--bronze);}
@@ -299,6 +302,15 @@
   .cta.ghost{background:none;color:var(--bronze);box-shadow:inset 0 0 0 1px var(--bronze);}
   .cta.ghost:hover{background:var(--bronze);color:var(--bone);}
   .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:44px;}
+  .signup{display:flex;align-items:center;justify-content:space-between;gap:28px;
+    margin-top:64px;padding-top:38px;border-top:1px solid var(--hair);}
+  .signup h3{font-family:var(--display);font-weight:700;font-size:28px;
+    color:var(--char);line-height:1.2;margin-bottom:10px;}
+  .signup p{margin:0;}
+  .signup .cta{flex-shrink:0;margin:0;}
+  .hero-signup{display:inline-block;margin-top:22px;font-size:14px;
+    color:var(--bronze);text-underline-offset:4px;}
+  a:focus-visible{outline:2px solid var(--bronze);outline-offset:5px;}
   .dark .cta{background:var(--peach);color:var(--char);}
   .dark .cta:hover{background:var(--coppergold);}
 
@@ -343,6 +355,8 @@
     .v-name2{font-size:30px;}
     .core-sub{font-size:25px;}
     .ctas .cta{flex:1 1 100%;text-align:center;}
+    .signup{flex-direction:column;align-items:flex-start;gap:22px;margin-top:48px;}
+    .signup .cta{width:100%;text-align:center;}
     .drawer{margin-top:34px;}
     .pull{font-size:20px;padding-left:18px;}
 
@@ -358,6 +372,7 @@
         <img class="mark" src="img/ivrahim-wordmark.svg" alt="IVRAHIM">
         <div class="markgloss">avraham <span>|</span> ibrahim</div>
         <div class="tagline">An ancestral music project by Axel Mansoor.</div>
+        <a class="hero-signup" href="#stay-in-touch">Stay in touch</a>
       </div>
       <div class="heroright">
         <img class="heroshot" src="img/axel-hero.jpg?v=2" alt="Ivrahim">
@@ -509,7 +524,8 @@
   </div>
 </section>
 
-<section class="dark">
+<!-- The Wave is paused. Remove hidden to restore this section. -->
+<section class="dark" id="the-wave" hidden>
   <div class="wrap">
     <div class="eyebrow">The wave</div>
     <h2>It&rsquo;s already happening</h2>
@@ -539,28 +555,35 @@
 <section>
   <div class="wrap">
     <div class="eyebrow">This music is collective</div>
-    <h2>Seeking collaborators</h2>
+    <h2>Wishes</h2>
     <div class="asks">
       <div class="ask">
-        <h3>Co-Producers / Mixers</h3>
-        <p>I love making demos...but the true finishing moves will happen in collaboration with those who get the vision and desire to join this wave of music.</p>
+        <h3>People to make this music with</h3>
+        <p>Live and in the studio. Maybe that&rsquo;s you?</p>
       </div>
       <div class="ask">
-        <h3>Artists / Musicians</h3>
-        <p>These songs need live drums and an actual bassist. Most also need more than a single voice or perspective. Plus, these are meant to be performed live. Backing tracks will displease the ancestors.</p>
+        <h3>Places to bring the music</h3>
+        <p>Hosts, spaces, and people in LA or New York who should hear it.</p>
       </div>
       <div class="ask">
-        <h3>Photo + Video</h3>
-        <p>Translating the world of sound into visuals is not my forte. There is so much inspiration to be found here.</p>
+        <h3>Support that helps it keep growing</h3>
+        <p>Grants, paid gigs, funding, or an introduction.</p>
       </div>
       <div class="ask">
-        <h3>Other Areas</h3>
-        <p>Management, Funders, Distribution, Licensing, Legal, etc.</p>
+        <h3>A beautiful historic synagogue</h3>
+        <p>For a live performance or music video.</p>
       </div>
     </div>
     <div class="ctas">
       <a class="cta" href="mailto:hello@ivrahim.com?subject=Ivrahim">Email me</a>
       <a class="cta ghost" href="https://cal.com/axelmansoor/chat" target="_blank" rel="noopener">Let&rsquo;s chat</a>
+    </div>
+    <div class="signup" id="stay-in-touch" aria-labelledby="signup-title">
+      <div>
+        <h3 id="signup-title">Stay in touch</h3>
+        <p>Occasional notes on new music and places to gather.</p>
+      </div>
+      <a class="cta" href="https://form.jotform.com/262986536126063" target="_blank" rel="noopener">Keep me in the loop</a>
     </div>
   </div>
 </section>
