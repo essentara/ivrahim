@@ -1,0 +1,15 @@
+{
+  "tracks": {
+    "modeh-ani": {"title": "Modeh Ani (Gratitude Mantra)", "desc": "A combination of gratitude prayers from two of my cultures.", "src": "/audio/modeh-ani-2026-10-24.mp3", "duration": 188},
+    "metta-mantra": {"title": "Metta Mantra", "desc": "Loving-kindness meditation.", "src": "/audio/metta-mantra-2026-10-24.mp3", "duration": 243},
+    "call-your-parents": {"title": "Call Your Parents", "desc": "A reminder to myself.", "src": "/audio/call-your-parents-2026-10-24.mp3", "duration": 186},
+    "adon-olam": {"title": "Adon Olam", "desc": "A thousand-year-old hymn praising the power of mystery.", "src": "/audio/adon-olam-2026-10-24.mp3", "duration": 270},
+    "lecha-dodi": {"title": "Lecha Dodi", "desc": "Classic Jewish hymn to welcome in a restful weekend.", "src": "/audio/lecha-dodi-2026-10-24.mp3", "duration": 226},
+    "hine-ma-tov": {"title": "Hine Ma Tov", "desc": "How good it is to sit with brothers and sisters.", "src": "/audio/hine-ma-tov-2026-10-24.mp3", "duration": 229},
+    "back-in-a-while": {"title": "Back in a While", "desc": "A song about the muse.", "src": "/audio/back-in-a-while-2026-10-24.mp3", "duration": 214}
+  },
+
+  "links": [
+    {"path": "shabbat", "tracks": ["lecha-dodi", "adon-olam", "hine-ma-tov"]}
+  ]
+}
