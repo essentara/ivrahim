@@ -78,14 +78,13 @@
   .tracks button{width:100%;display:grid;grid-template-columns:28px 1fr auto;gap:10px;
     align-items:baseline;text-align:left;padding:12px 0;border-bottom:1px solid var(--hair-dark);}
   .tracks .n,.tracks .d{font-size:13px;color:var(--on-dark-mute);font-variant-numeric:tabular-nums;}
-  .tracks .on .t{color:var(--peach);}
-  .tracks .on .n{color:var(--peach);}
-  .tracks.compact{display:flex;flex-wrap:wrap;gap:6px 26px;border-top:0;margin-top:26px;}
-  .tracks.compact button{display:block;width:auto;padding:6px 0 7px;border-bottom:1px solid transparent;
-    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-mute);
-    transition:color .2s ease,border-color .2s ease;}
-  .tracks.compact button:hover{color:var(--peach);}
-  .tracks.compact .on{border-bottom-color:var(--peach);}
+  .tracks .n{position:relative;}
+  .tracks .t{transition:color .2s ease;}
+  .tracks button:hover .t{color:var(--peach);}
+  .tracks .on .t,.tracks .on .d{color:var(--peach);}
+  .tracks .on .n{color:transparent;}
+  .tracks .on .n::before{content:"";position:absolute;left:1px;top:50%;transform:translateY(-50%);
+    border-left:8px solid var(--peach);border-top:5px solid transparent;border-bottom:5px solid transparent;}
 
   .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px;}
   .chip{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--peach);
@@ -135,7 +134,7 @@
         <div class="times"><span id="cur">0:00</span><span id="dur">3:49</span></div>
       </div>
     </div>
-    <ol class="tracks compact" aria-label="Songs"><li><button type="button"><span class="t">Hine Ma Tov</span></button></li><li><button type="button"><span class="t">Lecha Dodi</span></button></li><li><button type="button"><span class="t">Adon Olam</span></button></li><li><button type="button"><span class="t">Modeh Ani (Gratitude Mantra)</span></button></li></ol>
+    <ol class="tracks" aria-label="Songs"><li><button type="button"><span class="n">1</span><span class="t">Hine Ma Tov</span><span class="d">3:49</span></button></li><li><button type="button"><span class="n">2</span><span class="t">Lecha Dodi</span><span class="d">3:46</span></button></li><li><button type="button"><span class="n">3</span><span class="t">Adon Olam</span><span class="d">4:30</span></button></li><li><button type="button"><span class="n">4</span><span class="t">Modeh Ani (Gratitude Mantra)</span><span class="d">3:08</span></button></li></ol>
     <div class="actions">
       <button class="chip" id="share">Share</button>
       <button class="chip" id="share-at" hidden>Share from 0:00</button>
@@ -185,7 +184,7 @@
 
 <script>
 (function(){
-  var TRACKS = [{"title": "Hine Ma Tov", "desc": "How good it is to sit with brothers and sisters.", "src": "/audio/hine-ma-tov-2026-10-24.mp3", "duration": 229}, {"title": "Lecha Dodi", "desc": "Classic Jewish hymn to welcome in a restful weekend.", "src": "/audio/lecha-dodi-2026-10-24.mp3", "duration": 226}, {"title": "Adon Olam", "desc": "A thousand-year-old hymn praising the power of mystery.", "src": "/audio/adon-olam-2026-10-24.mp3", "duration": 270}, {"title": "Modeh Ani (Gratitude Mantra)", "desc": "A combination of gratitude prayers from two of my cultures.", "src": "/audio/modeh-ani-2026-10-24.mp3", "duration": 188}];
+  var TRACKS = [{"title": "Hine Ma Tov", "desc": "How good it is to sit with brothers and sisters.", "src": "/audio/hine-ma-tov-2026-11-24-master.mp3", "duration": 229}, {"title": "Lecha Dodi", "desc": "Classic Jewish hymn to welcome in a restful weekend.", "src": "/audio/lecha-dodi-2026-10-24.mp3", "duration": 226}, {"title": "Adon Olam", "desc": "A thousand-year-old hymn praising the power of mystery.", "src": "/audio/adon-olam-2026-10-24.mp3", "duration": 270}, {"title": "Modeh Ani (Gratitude Mantra)", "desc": "A combination of gratitude prayers from two of my cultures.", "src": "/audio/modeh-ani-2026-10-24.mp3", "duration": 188}];
   var SET = null;
   var COVER = "https://ivrahim.com/img/listen-cover.jpg";
 

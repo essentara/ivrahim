@@ -94,14 +94,13 @@ PAGE = Template(r"""<!DOCTYPE html>
   .tracks button{width:100%;display:grid;grid-template-columns:28px 1fr auto;gap:10px;
     align-items:baseline;text-align:left;padding:12px 0;border-bottom:1px solid var(--hair-dark);}
   .tracks .n,.tracks .d{font-size:13px;color:var(--on-dark-mute);font-variant-numeric:tabular-nums;}
-  .tracks .on .t{color:var(--peach);}
-  .tracks .on .n{color:var(--peach);}
-  .tracks.compact{display:flex;flex-wrap:wrap;gap:6px 26px;border-top:0;margin-top:26px;}
-  .tracks.compact button{display:block;width:auto;padding:6px 0 7px;border-bottom:1px solid transparent;
-    font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-dark-mute);
-    transition:color .2s ease,border-color .2s ease;}
-  .tracks.compact button:hover{color:var(--peach);}
-  .tracks.compact .on{border-bottom-color:var(--peach);}
+  .tracks .n{position:relative;}
+  .tracks .t{transition:color .2s ease;}
+  .tracks button:hover .t{color:var(--peach);}
+  .tracks .on .t,.tracks .on .d{color:var(--peach);}
+  .tracks .on .n{color:transparent;}
+  .tracks .on .n::before{content:"";position:absolute;left:1px;top:50%;transform:translateY(-50%);
+    border-left:8px solid var(--peach);border-top:5px solid transparent;border-bottom:5px solid transparent;}
 
   .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px;}
   .chip{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--peach);
@@ -356,21 +355,12 @@ def main():
         desc = f"{len(tracks)} songs by IVRAHIM." if set_title else first["desc"]
         note = link.get("note")
 
-        # up to four songs get the compact selector; longer sets get the full tracklist
-        compact = len(tracks) <= 4
-        if compact:
-            rows = "".join(
-                f'<li><button type="button"><span class="t">{esc(t["title"])}</span></button></li>'
-                for t in tracks
-            )
-        else:
-            rows = "".join(
-                f'<li><button type="button"><span class="n">{n}</span>'
-                f'<span class="t">{esc(t["title"])}</span>'
-                f'<span class="d">{t["duration"] // 60}:{t["duration"] % 60:02d}</span></button></li>'
-                for n, t in enumerate(tracks, 1)
-            )
-        tracks_class = "tracks compact" if compact else "tracks"
+        rows = "".join(
+            f'<li><button type="button"><span class="n">{n}</span>'
+            f'<span class="t">{esc(t["title"])}</span>'
+            f'<span class="d">{t["duration"] // 60}:{t["duration"] % 60:02d}</span></button></li>'
+            for n, t in enumerate(tracks, 1)
+        )
         page = PAGE.substitute(
             page_title=esc(f"{name} · IVRAHIM"),
             desc=esc(desc),
@@ -382,7 +372,7 @@ def main():
             first_desc=esc(first["desc"]),
             first_duration=first["duration"],
             first_time=f'{first["duration"] // 60}:{first["duration"] % 60:02d}',
-            list_html=f'<ol class="{tracks_class}" aria-label="Songs">{rows}</ol>' if len(tracks) > 1 else "",
+            list_html=f'<ol class="tracks" aria-label="Songs">{rows}</ol>' if len(tracks) > 1 else "",
             tracks_json=js(tracks),
             set_json=js(set_title),
         )
