@@ -2,7 +2,9 @@
 """Build one listen page per entry in links.json.
 
 Add a link: add an entry to "links" (path + track keys, optional "title" for
-a set and optional "note"), then run `python3 listen/build.py` from website/.
+a set, optional "note", and optional "listen_url" for a release page that
+links out to streaming services and drops the links to the rest of the site),
+then run `python3 listen/build.py` from website/.
 Each page lands at <path>/index.html -> ivrahim.com/<path>.
 """
 import html
@@ -106,6 +108,8 @@ PAGE = Template(r"""<!DOCTYPE html>
   .chip{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--peach);
     padding:11px 18px;box-shadow:inset 0 0 0 1px var(--hair-dark);transition:background .2s ease,color .2s ease;}
   .chip:hover{background:var(--peach);color:var(--char);}
+  .chip.solid{background:var(--peach);color:var(--char);text-decoration:none;}
+  .chip.solid:hover{background:var(--coppergold);}
 
   .stay{background:var(--bone);color:var(--ink);padding:64px 22px;}
   .stay-in{max-width:1080px;margin:0 auto;}
@@ -136,7 +140,7 @@ PAGE = Template(r"""<!DOCTYPE html>
 <main class="card" id="card">
   <figure class="cover"><img src="/img/listen-cover.webp" width="1200" height="1200" alt="IVRAHIM reclining on velvet in a copper robe."></figure>
   <div class="info">
-    <a class="mark" href="/"><img src="/img/ivrahim-wordmark-bone.svg" alt="IVRAHIM"></a>
+    $mark_html
     $note_html$set_html
     <h1 id="title">$first_title</h1>
     <p class="desc" id="desc">$first_desc</p>
@@ -152,7 +156,7 @@ PAGE = Template(r"""<!DOCTYPE html>
     </div>
     $list_html
     <div class="actions">
-      <button class="chip" id="share">Share</button>
+      $listen_html<button class="chip" id="share">Share</button>
       <button class="chip" id="share-at" hidden>Share from 0:00</button>
     </div>
   </div>
@@ -164,14 +168,10 @@ PAGE = Template(r"""<!DOCTYPE html>
     <p>Occasional notes on new music and places to gather.</p>
     <iframe class="signup-frame" id="signup-frame" src="/signup.html" title="Join the IVRAHIM mailing list" loading="lazy"></iframe>
     <p class="signup-confirmation" id="signup-confirmation" role="status" tabindex="-1" hidden>You&rsquo;re on the list. Thank you for listening :)</p>
-    <div class="ctas">
-      <a class="cta" href="mailto:hello@ivrahim.com?subject=Ivrahim">Email me</a>
-      <a class="cta ghost" href="https://cal.com/axelmansoor/chat" target="_blank" rel="noopener">Let&rsquo;s chat</a>
-    </div>
-  </div>
+$ctas_html  </div>
 </section>
 
-<footer><p>IVRAHIM &middot; More at <a href="/">ivrahim.com</a></p></footer>
+<footer><p>$footer_html</p></footer>
 
 <script>
 (function(){
@@ -337,6 +337,13 @@ PAGE = Template(r"""<!DOCTYPE html>
 """)
 
 
+CTAS = """    <div class="ctas">
+      <a class="cta" href="mailto:hello@ivrahim.com?subject=Ivrahim">Email me</a>
+      <a class="cta ghost" href="https://cal.com/axelmansoor/chat" target="_blank" rel="noopener">Let&rsquo;s chat</a>
+    </div>
+"""
+
+
 def esc(s):
     return html.escape(s, quote=True)
 
@@ -354,6 +361,8 @@ def main():
         name = set_title or first["title"]
         desc = f"{len(tracks)} songs by IVRAHIM." if set_title else first["desc"]
         note = link.get("note")
+        listen_url = link.get("listen_url")
+        wordmark = '<img src="/img/ivrahim-wordmark-bone.svg" alt="IVRAHIM">'
 
         rows = "".join(
             f'<li><button type="button"><span class="n">{n}</span>'
@@ -373,6 +382,12 @@ def main():
             first_duration=first["duration"],
             first_time=f'{first["duration"] // 60}:{first["duration"] % 60:02d}',
             list_html=f'<ol class="tracks" aria-label="Songs">{rows}</ol>' if len(tracks) > 1 else "",
+            mark_html=f'<span class="mark">{wordmark}</span>' if listen_url
+                else f'<a class="mark" href="/">{wordmark}</a>',
+            listen_html=f'<a class="chip solid" href="{esc(listen_url)}" target="_blank" rel="noopener">Listen on your app</a>\n      '
+                if listen_url else "",
+            ctas_html="" if listen_url else CTAS,
+            footer_html="IVRAHIM" if listen_url else 'IVRAHIM &middot; More at <a href="/">ivrahim.com</a>',
             tracks_json=js(tracks),
             set_json=js(set_title),
         )

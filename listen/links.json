@@ -10,6 +10,7 @@
   },
 
   "links": [
-    {"path": "shabbat", "tracks": ["hine-ma-tov", "lecha-dodi", "adon-olam", "modeh-ani"]}
+    {"path": "shabbat", "tracks": ["hine-ma-tov", "lecha-dodi", "adon-olam", "modeh-ani"]},
+    {"path": "hinematov", "tracks": ["hine-ma-tov"], "listen_url": "https://lnk.dmsmusic.co/ivrahimaxelmansoor_hinematov"}
   ]
 }
